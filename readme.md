@@ -34,9 +34,28 @@ This project uses Node.js, Express, MongoDB, and Mongoose to provide CRUD operat
 ## Configuration
 Create a `.env` file in the project root:
 ```env
-MONGODB_URI=<your-mongodb-connection-string>
+MONGODB_URI=mongodb://127.0.0.1:27017/kitchendb
 PORT=5000
 ```
+
+### MongoDB Atlas connection string
+If you use MongoDB Atlas, replace the value with your Atlas URI:
+```env
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/kitchendb?retryWrites=true&w=majority
+```
+
+### Local MongoDB connection string
+For a local MongoDB server, use:
+```env
+MONGODB_URI=mongodb://127.0.0.1:27017/kitchendb
+```
+
+## VS Code MongoDB Extension
+1. Install the MongoDB extension for VS Code.
+2. Open the MongoDB panel in VS Code.
+3. Click `Add Connection` or `Create Connection`.
+4. Paste one of the connection strings above.
+5. Save the connection and connect.
 
 ## Run the server
 - Development mode:
@@ -96,6 +115,7 @@ PORT=5000
 ## Notes
 - Make sure `.env` is not committed to GitHub
 - The app uses `process.env.MONGODB_URI` to connect to MongoDB
+- The server now waits for the database connection before starting
 
 ## License
 ISC

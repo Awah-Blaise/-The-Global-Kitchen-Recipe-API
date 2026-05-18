@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI);
+  const uri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/kitchendb";
 
-    console.log("MongoDB Connected Successfully");
+  try {
+    await mongoose.connect(uri);
+
+    console.log("MongoDB connected successfully");
   } catch (error) {
     console.error("Database Connection Error:", error.message);
     process.exit(1);
